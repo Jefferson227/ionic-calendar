@@ -1,0 +1,7 @@
+{
+  "name": "ionic-calendar",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
