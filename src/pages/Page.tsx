@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   IonButtons,
   IonContent,
@@ -6,11 +7,11 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  IonDatetime,
 } from '@ionic/react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import './Page.css';
-import IonicCalendar from '../components/IonicCalendar';
 
 const Page: React.FC = () => {
   const { name } = useParams<{ name: string }>();
@@ -33,7 +34,7 @@ const Page: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         {name === 'Calendar' ? (
-          <IonicCalendar />
+          <IonDatetime></IonDatetime>
         ) : (
           <ExploreContainer name={name} />
         )}
