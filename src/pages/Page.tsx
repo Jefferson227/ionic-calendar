@@ -10,6 +10,7 @@ import {
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import './Page.css';
+import IonicCalendar from '../components/IonicCalendar';
 
 const Page: React.FC = () => {
   const { name } = useParams<{ name: string }>();
@@ -31,7 +32,11 @@ const Page: React.FC = () => {
             <IonTitle size="large">{name}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        {name === 'calendar' ? <p>test</p> : <ExploreContainer name={name} />}
+        {name === 'Calendar' ? (
+          <IonicCalendar />
+        ) : (
+          <ExploreContainer name={name} />
+        )}
       </IonContent>
     </IonPage>
   );
