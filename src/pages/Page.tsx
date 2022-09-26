@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   IonButtons,
   IonContent,
@@ -15,6 +15,15 @@ import './Page.css';
 
 const Page: React.FC = () => {
   const { name } = useParams<{ name: string }>();
+  const datetime = useRef<null | HTMLIonDatetimeElement>(null);
+  const dateChange = (event: any) => {
+    console.log('date changed ' + event.target.value);
+  };
+
+  useEffect(() => {
+    if (!datetime.current) return;
+    datetime.current.value = ['2022-09-03', '2022-09-13', '2022-09-29'];
+  }, []);
 
   return (
     <IonPage>
@@ -34,7 +43,12 @@ const Page: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         {name === 'Calendar' ? (
-          <IonDatetime></IonDatetime>
+          <IonDatetime
+            ref={datetime}
+            presentation="date"
+            multiple={true}
+            onIonChange={(e) => dateChange(e)}
+          ></IonDatetime>
         ) : (
           <ExploreContainer name={name} />
         )}
