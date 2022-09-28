@@ -1,0 +1,21 @@
+.ionic-calendar-container {
+  width: 350px;
+  height: 339px;
+  background: #ef965f;
+  display: flex;
+  flex-direction: column;
+}
+
+.ionic-calendar-container .header {
+  display: flex;
+  justify-content: space-around;
+  margin: 23px 0 23px 0;
+}
+
+.ionic-calendar-container .body {
+  display: flex;
+}
+
+.ionic-calendar-container .footer {
+  display: flex;
+}

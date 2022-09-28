@@ -11,6 +11,7 @@ import {
 } from '@ionic/react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
+import IonicCalendar from '../components/IonicCalendar/IonicCalendar';
 import './Page.css';
 
 const Page: React.FC = () => {
@@ -43,12 +44,16 @@ const Page: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         {name === 'Calendar' ? (
-          <IonDatetime
-            ref={datetime}
-            presentation="date"
-            multiple={true}
-            onIonChange={(e) => dateChange(e)}
-          ></IonDatetime>
+          <div>
+            <IonDatetime
+              ref={datetime}
+              presentation="date"
+              multiple={true}
+              onIonChange={(e) => dateChange(e)}
+            ></IonDatetime>
+
+            <IonicCalendar />
+          </div>
         ) : (
           <ExploreContainer name={name} />
         )}
