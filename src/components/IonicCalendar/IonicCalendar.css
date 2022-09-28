@@ -12,8 +12,19 @@
   margin: 23px 0 23px 0;
 }
 
-.ionic-calendar-container .body {
+/* .ionic-calendar-container .body { */
+/* } */
+
+.ionic-calendar-container .body .weekdays {
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.ionic-calendar-container .body .calendar-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .ionic-calendar-container .footer {
