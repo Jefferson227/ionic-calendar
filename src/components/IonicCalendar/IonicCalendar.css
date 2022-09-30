@@ -1,15 +1,29 @@
 .ionic-calendar-container {
   width: 350px;
   height: 339px;
-  background: #ef965f;
+  background: #2a2a2a;
   display: flex;
   flex-direction: column;
+}
+
+.ionic-calendar-container .button {
+  background: none;
+  color: inherit;
+  font-size: 16px;
+}
+
+.ionic-calendar-container .button.button-arrow {
+  font-size: 25px;
 }
 
 .ionic-calendar-container .header {
   display: flex;
   justify-content: space-around;
   margin: 23px 0 23px 0;
+}
+
+.ionic-calendar-container .body {
+  margin: 0 10px 0 10px;
 }
 
 .ionic-calendar-container .body .weekdays {

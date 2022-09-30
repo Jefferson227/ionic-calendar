@@ -1,13 +1,21 @@
 import './IonicCalendar.css';
+import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
+import { IonIcon } from '@ionic/react';
 
 const IonicCalendar = () => {
   return (
     <section className="ionic-calendar-container">
       <div className="header">
-        <button className="button-back">Back</button>
-        <button className="button-month">September</button>
-        <button className="button-year">2022</button>
-        <button className="button-forward">Forward</button>
+        <button className="button button-arrow">
+          <IonIcon icon={chevronBackOutline} />
+        </button>
+
+        <button className="button button-month">September</button>
+        <button className="button button-year">2022</button>
+
+        <button className="button button-arrow">
+          <IonIcon icon={chevronForwardOutline} />
+        </button>
       </div>
 
       <div className="body">
