@@ -45,6 +45,11 @@
   padding: 10px 0 10px 0;
 }
 
+.ionic-calendar-container .body .calendar-grid .row .day .button-day {
+  margin: 0;
+  padding: 0;
+}
+
 .ionic-calendar-container .footer {
   display: flex;
 }
