@@ -1,8 +1,63 @@
 import './IonicCalendar.css';
 import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { IonIcon } from '@ionic/react';
+import { addDays, addMonths } from 'date-fns';
 
 const IonicCalendar = () => {
+  const getCalendarDays = () => {
+    const now = new Date();
+    var calendarDay = new Date(now.getFullYear(), now.getMonth(), 1);
+
+    var firstRow = ['', '', '', '', '', '', ''];
+    var secondRow = ['', '', '', '', '', '', ''];
+    var thirdRow = ['', '', '', '', '', '', ''];
+    var fourthRow = ['', '', '', '', '', '', ''];
+    var fifthRow = ['', '', '', '', '', '', ''];
+    var sixthRow = ['', '', '', '', '', '', ''];
+
+    const nextMonth = addMonths(now, 1).getMonth();
+    var currentRow = 1;
+
+    while (calendarDay.getMonth() < nextMonth) {
+      if (currentRow === 1) {
+        firstRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+      } else if (currentRow === 2) {
+        secondRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+      } else if (currentRow === 3) {
+        thirdRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+      } else if (currentRow === 4) {
+        fourthRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+      } else if (currentRow === 5) {
+        fifthRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+      } else if (currentRow === 6) {
+        sixthRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+      }
+
+      calendarDay = addDays(calendarDay, 1);
+
+      if (firstRow[6].length !== 0 && currentRow === 1) currentRow++;
+
+      if (secondRow[6].length !== 0 && currentRow === 2) currentRow++;
+
+      if (thirdRow[6].length !== 0 && currentRow === 3) currentRow++;
+
+      if (fourthRow[6].length !== 0 && currentRow === 4) currentRow++;
+
+      if (fifthRow[6].length !== 0 && currentRow === 5) currentRow++;
+
+      if (sixthRow[6].length !== 0 && currentRow === 6) currentRow++;
+    }
+
+    console.log(firstRow);
+    console.log(secondRow);
+    console.log(thirdRow);
+    console.log(fourthRow);
+    console.log(fifthRow);
+    console.log(sixthRow);
+  };
+
+  getCalendarDays();
+
   return (
     <section className="ionic-calendar-container">
       <div className="header">
