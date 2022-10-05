@@ -11,6 +11,40 @@ const IonicCalendar = () => {
   const [fourthRow, setFourthRow] = useState(['', '', '', '', '', '', '']);
   const [fifthRow, setFifthRow] = useState(['', '', '', '', '', '', '']);
   const [sixthRow, setSixthRow] = useState(['', '', '', '', '', '', '']);
+  const [monthName, setMonthName] = useState('');
+
+  const getMonthName = () => {
+    const currentMonthIndex = new Date().getMonth();
+
+    switch (currentMonthIndex) {
+      case 0:
+        return 'January';
+      case 1:
+        return 'February';
+      case 2:
+        return 'March';
+      case 3:
+        return 'April';
+      case 4:
+        return 'May';
+      case 5:
+        return 'June';
+      case 6:
+        return 'July';
+      case 7:
+        return 'August';
+      case 8:
+        return 'September';
+      case 9:
+        return 'October';
+      case 10:
+        return 'November';
+      case 11:
+        return 'December';
+      default:
+        return '';
+    }
+  };
 
   useEffect(() => {
     const getCalendarDays = () => {
@@ -77,6 +111,7 @@ const IonicCalendar = () => {
     };
 
     getCalendarDays();
+    setMonthName(getMonthName());
   }, [
     firstRow,
     setFirstRow,
@@ -90,6 +125,9 @@ const IonicCalendar = () => {
     setFifthRow,
     sixthRow,
     setSixthRow,
+    monthName,
+    setMonthName,
+    getMonthName,
   ]);
 
   return (
@@ -99,7 +137,7 @@ const IonicCalendar = () => {
           <IonIcon icon={chevronBackOutline} />
         </button>
 
-        <button className="button button-month">September</button>
+        <button className="button button-month">{monthName}</button>
         <button className="button button-year">2022</button>
 
         <button className="button button-arrow">
