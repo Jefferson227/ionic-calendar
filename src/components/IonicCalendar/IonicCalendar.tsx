@@ -13,43 +13,10 @@ const IonicCalendar = () => {
   const [sixthRow, setSixthRow] = useState(['', '', '', '', '', '', '']);
   const [monthName, setMonthName] = useState('');
 
-  const getMonthName = () => {
-    const currentMonthIndex = new Date().getMonth();
-
-    switch (currentMonthIndex) {
-      case 0:
-        return 'January';
-      case 1:
-        return 'February';
-      case 2:
-        return 'March';
-      case 3:
-        return 'April';
-      case 4:
-        return 'May';
-      case 5:
-        return 'June';
-      case 6:
-        return 'July';
-      case 7:
-        return 'August';
-      case 8:
-        return 'September';
-      case 9:
-        return 'October';
-      case 10:
-        return 'November';
-      case 11:
-        return 'December';
-      default:
-        return '';
-    }
-  };
-
   useEffect(() => {
-    setMonthName(getMonthName());
+    setMonthName(controller.getMonthName());
     console.log(monthName);
-  }, [monthName, setMonthName, getMonthName]);
+  }, [monthName, setMonthName, controller.getMonthName]);
 
   useEffect(() => {
     const params = {
@@ -87,6 +54,7 @@ const IonicCalendar = () => {
     setFifthRow,
     sixthRow,
     setSixthRow,
+    controller.getCalendarDays,
   ]);
 
   return (
