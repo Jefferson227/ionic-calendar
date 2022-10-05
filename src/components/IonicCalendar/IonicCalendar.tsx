@@ -2,61 +2,95 @@ import './IonicCalendar.css';
 import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { IonIcon } from '@ionic/react';
 import { addDays, addMonths } from 'date-fns';
+import { useEffect, useState } from 'react';
 
 const IonicCalendar = () => {
-  const getCalendarDays = () => {
-    const now = new Date();
-    var calendarDay = new Date(now.getFullYear(), now.getMonth(), 1);
+  const [firstRow, setFirstRow] = useState(['', '', '', '', '', '', '']);
+  const [secondRow, setSecondRow] = useState(['', '', '', '', '', '', '']);
+  const [thirdRow, setThirdRow] = useState(['', '', '', '', '', '', '']);
+  const [fourthRow, setFourthRow] = useState(['', '', '', '', '', '', '']);
+  const [fifthRow, setFifthRow] = useState(['', '', '', '', '', '', '']);
+  const [sixthRow, setSixthRow] = useState(['', '', '', '', '', '', '']);
 
-    var firstRow = ['', '', '', '', '', '', ''];
-    var secondRow = ['', '', '', '', '', '', ''];
-    var thirdRow = ['', '', '', '', '', '', ''];
-    var fourthRow = ['', '', '', '', '', '', ''];
-    var fifthRow = ['', '', '', '', '', '', ''];
-    var sixthRow = ['', '', '', '', '', '', ''];
+  useEffect(() => {
+    const getCalendarDays = () => {
+      const now = new Date();
+      var calendarDay = new Date(now.getFullYear(), now.getMonth(), 1);
 
-    const nextMonth = addMonths(now, 1).getMonth();
-    var currentRow = 1;
+      const nextMonth = addMonths(now, 1).getMonth();
+      var currentRow = 1;
 
-    while (calendarDay.getMonth() < nextMonth) {
-      if (currentRow === 1) {
-        firstRow[calendarDay.getDay()] = calendarDay.getDate().toString();
-      } else if (currentRow === 2) {
-        secondRow[calendarDay.getDay()] = calendarDay.getDate().toString();
-      } else if (currentRow === 3) {
-        thirdRow[calendarDay.getDay()] = calendarDay.getDate().toString();
-      } else if (currentRow === 4) {
-        fourthRow[calendarDay.getDay()] = calendarDay.getDate().toString();
-      } else if (currentRow === 5) {
-        fifthRow[calendarDay.getDay()] = calendarDay.getDate().toString();
-      } else if (currentRow === 6) {
-        sixthRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+      while (calendarDay.getMonth() < nextMonth) {
+        if (currentRow === 1) {
+          const tempRow = firstRow;
+          tempRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+
+          setFirstRow(tempRow);
+        } else if (currentRow === 2) {
+          const tempRow = secondRow;
+          tempRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+
+          setSecondRow(tempRow);
+        } else if (currentRow === 3) {
+          const tempRow = thirdRow;
+          tempRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+
+          setThirdRow(tempRow);
+        } else if (currentRow === 4) {
+          const tempRow = fourthRow;
+          tempRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+
+          setFourthRow(tempRow);
+        } else if (currentRow === 5) {
+          const tempRow = fifthRow;
+          fifthRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+
+          setFifthRow(tempRow);
+        } else if (currentRow === 6) {
+          const tempRow = sixthRow;
+          sixthRow[calendarDay.getDay()] = calendarDay.getDate().toString();
+
+          setSixthRow(tempRow);
+        }
+
+        calendarDay = addDays(calendarDay, 1);
+
+        if (firstRow[6].length !== 0 && currentRow === 1) currentRow++;
+
+        if (secondRow[6].length !== 0 && currentRow === 2) currentRow++;
+
+        if (thirdRow[6].length !== 0 && currentRow === 3) currentRow++;
+
+        if (fourthRow[6].length !== 0 && currentRow === 4) currentRow++;
+
+        if (fifthRow[6].length !== 0 && currentRow === 5) currentRow++;
+
+        if (sixthRow[6].length !== 0 && currentRow === 6) currentRow++;
       }
 
-      calendarDay = addDays(calendarDay, 1);
+      console.log(firstRow);
+      console.log(secondRow);
+      console.log(thirdRow);
+      console.log(fourthRow);
+      console.log(fifthRow);
+      console.log(sixthRow);
+    };
 
-      if (firstRow[6].length !== 0 && currentRow === 1) currentRow++;
-
-      if (secondRow[6].length !== 0 && currentRow === 2) currentRow++;
-
-      if (thirdRow[6].length !== 0 && currentRow === 3) currentRow++;
-
-      if (fourthRow[6].length !== 0 && currentRow === 4) currentRow++;
-
-      if (fifthRow[6].length !== 0 && currentRow === 5) currentRow++;
-
-      if (sixthRow[6].length !== 0 && currentRow === 6) currentRow++;
-    }
-
-    console.log(firstRow);
-    console.log(secondRow);
-    console.log(thirdRow);
-    console.log(fourthRow);
-    console.log(fifthRow);
-    console.log(sixthRow);
-  };
-
-  getCalendarDays();
+    getCalendarDays();
+  }, [
+    firstRow,
+    setFirstRow,
+    secondRow,
+    setSecondRow,
+    thirdRow,
+    setThirdRow,
+    fourthRow,
+    setFourthRow,
+    fifthRow,
+    setFifthRow,
+    sixthRow,
+    setSixthRow,
+  ]);
 
   return (
     <section className="ionic-calendar-container">
