@@ -101,17 +101,18 @@ const IonicCalendar = () => {
 
         if (sixthRow[6].length !== 0 && currentRow === 6) currentRow++;
       }
-
-      console.log(firstRow);
-      console.log(secondRow);
-      console.log(thirdRow);
-      console.log(fourthRow);
-      console.log(fifthRow);
-      console.log(sixthRow);
     };
 
     getCalendarDays();
     setMonthName(getMonthName());
+
+    console.log(firstRow);
+    console.log(secondRow);
+    console.log(thirdRow);
+    console.log(fourthRow);
+    console.log(fifthRow);
+    console.log(sixthRow);
+    console.log(monthName);
   }, [
     firstRow,
     setFirstRow,
