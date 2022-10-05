@@ -47,6 +47,11 @@ const IonicCalendar = () => {
   };
 
   useEffect(() => {
+    setMonthName(getMonthName());
+    console.log(monthName);
+  }, [monthName, setMonthName, getMonthName]);
+
+  useEffect(() => {
     const getCalendarDays = () => {
       const now = new Date();
       var calendarDay = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -104,7 +109,6 @@ const IonicCalendar = () => {
     };
 
     getCalendarDays();
-    setMonthName(getMonthName());
 
     console.log(firstRow);
     console.log(secondRow);
@@ -112,7 +116,6 @@ const IonicCalendar = () => {
     console.log(fourthRow);
     console.log(fifthRow);
     console.log(sixthRow);
-    console.log(monthName);
   }, [
     firstRow,
     setFirstRow,
@@ -126,9 +129,6 @@ const IonicCalendar = () => {
     setFifthRow,
     sixthRow,
     setSixthRow,
-    monthName,
-    setMonthName,
-    getMonthName,
   ]);
 
   return (
