@@ -89,7 +89,13 @@ const getMonthName = () => {
   }
 };
 
+const getYear = (dateParam?: Date) => {
+  let date = dateParam || new Date();
+  return date.getFullYear().toString();
+};
+
 export default {
   getCalendarDays,
   getMonthName,
+  getYear,
 };

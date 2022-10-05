@@ -12,11 +12,17 @@ const IonicCalendar = () => {
   const [fifthRow, setFifthRow] = useState(['', '', '', '', '', '', '']);
   const [sixthRow, setSixthRow] = useState(['', '', '', '', '', '', '']);
   const [monthName, setMonthName] = useState('');
+  const [year, setYear] = useState('');
 
   useEffect(() => {
     setMonthName(controller.getMonthName());
     console.log(monthName);
   }, [monthName, setMonthName, controller.getMonthName]);
+
+  useEffect(() => {
+    setYear(controller.getYear());
+    console.log(year);
+  }, [year, setYear, controller.getYear]);
 
   useEffect(() => {
     const params = {
@@ -65,7 +71,7 @@ const IonicCalendar = () => {
         </button>
 
         <button className="button button-month">{monthName}</button>
-        <button className="button button-year">2022</button>
+        <button className="button button-year">{year}</button>
 
         <button className="button button-arrow">
           <IonIcon icon={chevronForwardOutline} />
