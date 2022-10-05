@@ -1,8 +1,8 @@
 import './IonicCalendar.css';
 import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { IonIcon } from '@ionic/react';
-import { addDays, addMonths } from 'date-fns';
 import { useEffect, useState } from 'react';
+import controller from './controller/controller';
 
 const IonicCalendar = () => {
   const [firstRow, setFirstRow] = useState(['', '', '', '', '', '', '']);
@@ -52,63 +52,21 @@ const IonicCalendar = () => {
   }, [monthName, setMonthName, getMonthName]);
 
   useEffect(() => {
-    const getCalendarDays = () => {
-      const now = new Date();
-      var calendarDay = new Date(now.getFullYear(), now.getMonth(), 1);
-
-      const nextMonth = addMonths(now, 1).getMonth();
-      var currentRow = 1;
-
-      while (calendarDay.getMonth() < nextMonth) {
-        if (currentRow === 1) {
-          const tempRow = firstRow;
-          tempRow[calendarDay.getDay()] = calendarDay.getDate().toString();
-
-          setFirstRow(tempRow);
-        } else if (currentRow === 2) {
-          const tempRow = secondRow;
-          tempRow[calendarDay.getDay()] = calendarDay.getDate().toString();
-
-          setSecondRow(tempRow);
-        } else if (currentRow === 3) {
-          const tempRow = thirdRow;
-          tempRow[calendarDay.getDay()] = calendarDay.getDate().toString();
-
-          setThirdRow(tempRow);
-        } else if (currentRow === 4) {
-          const tempRow = fourthRow;
-          tempRow[calendarDay.getDay()] = calendarDay.getDate().toString();
-
-          setFourthRow(tempRow);
-        } else if (currentRow === 5) {
-          const tempRow = fifthRow;
-          fifthRow[calendarDay.getDay()] = calendarDay.getDate().toString();
-
-          setFifthRow(tempRow);
-        } else if (currentRow === 6) {
-          const tempRow = sixthRow;
-          sixthRow[calendarDay.getDay()] = calendarDay.getDate().toString();
-
-          setSixthRow(tempRow);
-        }
-
-        calendarDay = addDays(calendarDay, 1);
-
-        if (firstRow[6].length !== 0 && currentRow === 1) currentRow++;
-
-        if (secondRow[6].length !== 0 && currentRow === 2) currentRow++;
-
-        if (thirdRow[6].length !== 0 && currentRow === 3) currentRow++;
-
-        if (fourthRow[6].length !== 0 && currentRow === 4) currentRow++;
-
-        if (fifthRow[6].length !== 0 && currentRow === 5) currentRow++;
-
-        if (sixthRow[6].length !== 0 && currentRow === 6) currentRow++;
-      }
+    const params = {
+      firstRow,
+      setFirstRow,
+      secondRow,
+      setSecondRow,
+      thirdRow,
+      setThirdRow,
+      fourthRow,
+      setFourthRow,
+      fifthRow,
+      setFifthRow,
+      sixthRow,
+      setSixthRow,
     };
-
-    getCalendarDays();
+    controller.getCalendarDays(params);
 
     console.log(firstRow);
     console.log(secondRow);
