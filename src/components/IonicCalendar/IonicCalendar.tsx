@@ -2,6 +2,7 @@ import './IonicCalendar.css';
 import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
 import { IonIcon } from '@ionic/react';
 import { useEffect, useState } from 'react';
+import { addMonths } from 'date-fns';
 import controller from './controller/controller';
 
 const IonicCalendar = () => {
@@ -13,6 +14,46 @@ const IonicCalendar = () => {
   const [sixthRow, setSixthRow] = useState(['', '', '', '', '', '', '']);
   const [monthName, setMonthName] = useState('');
   const [year, setYear] = useState('');
+
+  const selectNextMonth = () => {
+    console.log('next month clicked');
+    const params = {
+      firstRow,
+      setFirstRow,
+      secondRow,
+      setSecondRow,
+      thirdRow,
+      setThirdRow,
+      fourthRow,
+      setFourthRow,
+      fifthRow,
+      setFifthRow,
+      sixthRow,
+      setSixthRow,
+      date: addMonths(new Date(), 1),
+    };
+    controller.getCalendarDays(params);
+  };
+
+  const selectPreviousMonth = () => {
+    console.log('previous month clicked');
+    const params = {
+      firstRow,
+      setFirstRow,
+      secondRow,
+      setSecondRow,
+      thirdRow,
+      setThirdRow,
+      fourthRow,
+      setFourthRow,
+      fifthRow,
+      setFifthRow,
+      sixthRow,
+      setSixthRow,
+      date: addMonths(new Date(), -1),
+    };
+    controller.getCalendarDays(params);
+  };
 
   useEffect(() => {
     setMonthName(controller.getMonthName());
@@ -67,14 +108,14 @@ const IonicCalendar = () => {
     <section className="ionic-calendar-container">
       <div className="header">
         <button className="button button-arrow">
-          <IonIcon icon={chevronBackOutline} />
+          <IonIcon icon={chevronBackOutline} onClick={selectPreviousMonth} />
         </button>
 
         <button className="button button-month">{monthName}</button>
         <button className="button button-year">{year}</button>
 
         <button className="button button-arrow">
-          <IonIcon icon={chevronForwardOutline} />
+          <IonIcon icon={chevronForwardOutline} onClick={selectNextMonth} />
         </button>
       </div>
 
