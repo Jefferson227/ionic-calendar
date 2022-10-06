@@ -56,8 +56,9 @@ const getCalendarDays = (params: {
   }
 };
 
-const getMonthName = () => {
-  const currentMonthIndex = new Date().getMonth();
+const getMonthName = (dateParam?: Date) => {
+  const date = dateParam || new Date();
+  const currentMonthIndex = date.getMonth();
 
   switch (currentMonthIndex) {
     case 0:
@@ -90,7 +91,7 @@ const getMonthName = () => {
 };
 
 const getYear = (dateParam?: Date) => {
-  let date = dateParam || new Date();
+  const date = dateParam || new Date();
   return date.getFullYear().toString();
 };
 
