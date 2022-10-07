@@ -14,45 +14,16 @@ const IonicCalendar = () => {
   const [sixthRow, setSixthRow] = useState(['', '', '', '', '', '', '']);
   const [monthName, setMonthName] = useState('');
   const [year, setYear] = useState('');
+  const [mainDate, setMainDate] = useState(new Date());
 
   const selectNextMonth = () => {
     console.log('next month clicked');
-    const params = {
-      firstRow,
-      setFirstRow,
-      secondRow,
-      setSecondRow,
-      thirdRow,
-      setThirdRow,
-      fourthRow,
-      setFourthRow,
-      fifthRow,
-      setFifthRow,
-      sixthRow,
-      setSixthRow,
-      date: addMonths(new Date(), 1),
-    };
-    controller.getCalendarDays(params);
+    setMainDate(addMonths(mainDate, 1));
   };
 
   const selectPreviousMonth = () => {
     console.log('previous month clicked');
-    const params = {
-      firstRow,
-      setFirstRow,
-      secondRow,
-      setSecondRow,
-      thirdRow,
-      setThirdRow,
-      fourthRow,
-      setFourthRow,
-      fifthRow,
-      setFifthRow,
-      sixthRow,
-      setSixthRow,
-      date: addMonths(new Date(), -1),
-    };
-    controller.getCalendarDays(params);
+    setMainDate(addMonths(mainDate, -1));
   };
 
   useEffect(() => {
@@ -79,15 +50,9 @@ const IonicCalendar = () => {
       setFifthRow,
       sixthRow,
       setSixthRow,
+      mainDate,
     };
     controller.getCalendarDays(params);
-
-    console.log(firstRow);
-    console.log(secondRow);
-    console.log(thirdRow);
-    console.log(fourthRow);
-    console.log(fifthRow);
-    console.log(sixthRow);
   }, [
     firstRow,
     setFirstRow,
@@ -101,6 +66,7 @@ const IonicCalendar = () => {
     setFifthRow,
     sixthRow,
     setSixthRow,
+    mainDate,
     controller.getCalendarDays,
   ]);
 

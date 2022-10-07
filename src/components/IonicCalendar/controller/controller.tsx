@@ -23,9 +23,9 @@ const getCalendarDays = (params: {
   setFifthRow: (row: Array<string>) => void;
   sixthRow: Array<string>;
   setSixthRow: (row: Array<string>) => void;
-  date?: Date;
+  mainDate: Date;
 }) => {
-  const selectedDate = params.date || new Date();
+  const selectedDate = params.mainDate || new Date();
   let calendarDay = new Date(
     selectedDate.getFullYear(),
     selectedDate.getMonth(),
@@ -59,6 +59,14 @@ const getCalendarDays = (params: {
     if (params.fifthRow[6].length !== 0 && currentRow === 5) currentRow++;
     if (params.sixthRow[6].length !== 0 && currentRow === 6) currentRow++;
   }
+
+  console.log('calendar days loaded');
+  console.log(params.firstRow);
+  console.log(params.secondRow);
+  console.log(params.thirdRow);
+  console.log(params.fourthRow);
+  console.log(params.fifthRow);
+  console.log(params.sixthRow);
 };
 
 const getMonthName = (dateParam?: Date) => {
@@ -100,35 +108,8 @@ const getYear = (dateParam?: Date) => {
   return date.getFullYear().toString();
 };
 
-const selectMonth = (
-  type: string,
-  params: {
-    firstRow: Array<string>;
-    setFirstRow: (row: Array<string>) => void;
-    secondRow: Array<string>;
-    setSecondRow: (row: Array<string>) => void;
-    thirdRow: Array<string>;
-    setThirdRow: (row: Array<string>) => void;
-    fourthRow: Array<string>;
-    setFourthRow: (row: Array<string>) => void;
-    fifthRow: Array<string>;
-    setFifthRow: (row: Array<string>) => void;
-    sixthRow: Array<string>;
-    setSixthRow: (row: Array<string>) => void;
-    date?: Date;
-  }
-) => {
-  if (type === 'next') console.log('next month clicked');
-  else if (type === 'previous') console.log('previous month clicked');
-
-  params.date =
-    type === 'next' ? addMonths(new Date(), 1) : addMonths(new Date(), -1);
-  getCalendarDays(params);
-};
-
 export default {
   getCalendarDays,
   getMonthName,
   getYear,
-  selectMonth,
 };
