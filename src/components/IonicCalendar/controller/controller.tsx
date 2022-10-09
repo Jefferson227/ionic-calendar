@@ -17,7 +17,6 @@ const resetRow = (row: Array<string>, rowFn: (arr: Array<string>) => void) => {
 
     rowFn(tempRow);
   }
-  console.log('resetRow()');
 };
 
 const getCalendarDays = (params: {
@@ -76,14 +75,6 @@ const getCalendarDays = (params: {
     if (params.fifthRow[6].length !== 0 && currentRow === 5) currentRow++;
     if (params.sixthRow[6].length !== 0 && currentRow === 6) currentRow++;
   }
-
-  console.log('calendar days loaded');
-  console.log(params.firstRow);
-  console.log(params.secondRow);
-  console.log(params.thirdRow);
-  console.log(params.fourthRow);
-  console.log(params.fifthRow);
-  console.log(params.sixthRow);
 };
 
 const getMonthName = (dateParam?: Date) => {
