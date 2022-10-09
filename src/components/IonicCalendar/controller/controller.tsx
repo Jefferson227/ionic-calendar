@@ -41,7 +41,7 @@ const getCalendarDays = (params: {
     1
   );
 
-  const nextMonth = addMonths(selectedDate, 1).getMonth();
+  const calendarLastDay = addDays(addMonths(calendarDay, 1), -1);
   let currentRow = 1;
 
   resetRow(params.firstRow, params.setFirstRow);
@@ -51,7 +51,7 @@ const getCalendarDays = (params: {
   resetRow(params.fifthRow, params.setFifthRow);
   resetRow(params.sixthRow, params.setSixthRow);
 
-  while (calendarDay.getMonth() < nextMonth) {
+  while (calendarDay.getTime() <= calendarLastDay.getTime()) {
     if (currentRow === 1) {
       setRow(params.firstRow, params.setFirstRow, calendarDay);
     } else if (currentRow === 2) {
