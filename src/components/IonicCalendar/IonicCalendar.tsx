@@ -27,14 +27,16 @@ const IonicCalendar = () => {
   };
 
   useEffect(() => {
-    setMonthName(controller.getMonthName());
-    console.log(monthName);
-  }, [monthName, setMonthName, controller.getMonthName]);
-
-  useEffect(() => {
-    setYear(controller.getYear());
-    console.log(year);
-  }, [year, setYear, controller.getYear]);
+    console.log('mainDate : ' + mainDate);
+    setMonthName(controller.getMonthName(mainDate));
+    setYear(controller.getYear(mainDate));
+  }, [
+    mainDate,
+    setMonthName,
+    controller.getMonthName,
+    setYear,
+    controller.getYear,
+  ]);
 
   useEffect(() => {
     const params = {
