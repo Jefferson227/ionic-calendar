@@ -10,6 +10,16 @@ const setRow = (
   rowFn(tempRow);
 };
 
+const resetRow = (row: Array<string>, rowFn: (arr: Array<string>) => void) => {
+  for (let i = 0; i < 7; i++) {
+    const tempRow = row;
+    tempRow[i] = '';
+
+    rowFn(tempRow);
+  }
+  console.log('resetRow()');
+};
+
 const getCalendarDays = (params: {
   firstRow: Array<string>;
   setFirstRow: (row: Array<string>) => void;
@@ -34,6 +44,13 @@ const getCalendarDays = (params: {
 
   const nextMonth = addMonths(selectedDate, 1).getMonth();
   let currentRow = 1;
+
+  resetRow(params.firstRow, params.setFirstRow);
+  resetRow(params.secondRow, params.setSecondRow);
+  resetRow(params.thirdRow, params.setThirdRow);
+  resetRow(params.fourthRow, params.setFourthRow);
+  resetRow(params.fifthRow, params.setFifthRow);
+  resetRow(params.sixthRow, params.setSixthRow);
 
   while (calendarDay.getMonth() < nextMonth) {
     if (currentRow === 1) {
