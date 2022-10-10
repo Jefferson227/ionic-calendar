@@ -6,6 +6,7 @@ import { addMonths } from 'date-fns';
 import controller from './controller/controller';
 import CalendarGrid from './components/CalendarGrid';
 import MonthSelector from './components/MonthSelector';
+import YearSelector from './components/YearSelector';
 
 const IonicCalendar = () => {
   const [firstRow, setFirstRow] = useState(['', '', '', '', '', '', '']);
@@ -28,7 +29,7 @@ const IonicCalendar = () => {
   };
 
   const toggleMonthSelector = () => {
-    console.log('open MonthSelector');
+    console.log('toggle MonthSelector');
 
     if (bodyDisplay === 'month-selector') {
       setBodyDisplay('calendar-grid');
@@ -36,6 +37,17 @@ const IonicCalendar = () => {
     }
 
     setBodyDisplay('month-selector');
+  };
+
+  const toggleYearSelector = () => {
+    console.log('toggle YearSelector');
+
+    if (bodyDisplay === 'year-selector') {
+      setBodyDisplay('calendar-grid');
+      return;
+    }
+
+    setBodyDisplay('year-selector');
   };
 
   useEffect(() => {
@@ -94,7 +106,9 @@ const IonicCalendar = () => {
           {monthName}
         </button>
 
-        <button className="button button-year">{year}</button>
+        <button className="button button-year" onClick={toggleYearSelector}>
+          {year}
+        </button>
 
         <button className="button button-arrow">
           <IonIcon icon={chevronForwardOutline} onClick={selectNextMonth} />
@@ -114,6 +128,8 @@ const IonicCalendar = () => {
         ) : null}
 
         {bodyDisplay === 'month-selector' ? <MonthSelector /> : null}
+
+        {bodyDisplay === 'year-selector' ? <YearSelector /> : null}
       </div>
     </section>
   );
