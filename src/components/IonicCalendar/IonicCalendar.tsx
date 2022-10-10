@@ -17,6 +17,7 @@ const IonicCalendar = () => {
   const [monthName, setMonthName] = useState('');
   const [year, setYear] = useState('');
   const [mainDate, setMainDate] = useState(new Date());
+  const [bodyDisplay, setBodyDisplay] = useState('calendar-grid');
 
   const selectNextMonth = () => {
     setMainDate(addMonths(mainDate, 1));
@@ -26,8 +27,15 @@ const IonicCalendar = () => {
     setMainDate(addMonths(mainDate, -1));
   };
 
-  const openMonthSelector = () => {
+  const toggleMonthSelector = () => {
     console.log('open MonthSelector');
+
+    if (bodyDisplay === 'month-selector') {
+      setBodyDisplay('calendar-grid');
+      return;
+    }
+
+    setBodyDisplay('month-selector');
   };
 
   useEffect(() => {
@@ -82,7 +90,10 @@ const IonicCalendar = () => {
           <IonIcon icon={chevronBackOutline} onClick={selectPreviousMonth} />
         </button>
 
-        <button className="button button-month">{monthName}</button>
+        <button className="button button-month" onClick={toggleMonthSelector}>
+          {monthName}
+        </button>
+
         <button className="button button-year">{year}</button>
 
         <button className="button button-arrow">
@@ -91,14 +102,18 @@ const IonicCalendar = () => {
       </div>
 
       <div className="body">
-        <CalendarGrid
-          firstRow={firstRow}
-          secondRow={secondRow}
-          thirdRow={thirdRow}
-          fourthRow={fourthRow}
-          fifthRow={fifthRow}
-          sixthRow={sixthRow}
-        />
+        {bodyDisplay === 'calendar-grid' ? (
+          <CalendarGrid
+            firstRow={firstRow}
+            secondRow={secondRow}
+            thirdRow={thirdRow}
+            fourthRow={fourthRow}
+            fifthRow={fifthRow}
+            sixthRow={sixthRow}
+          />
+        ) : null}
+
+        {bodyDisplay === 'month-selector' ? <MonthSelector /> : null}
       </div>
     </section>
   );
