@@ -45,12 +45,12 @@ const Page: React.FC = () => {
         </IonHeader>
         {name === 'Calendar' ? (
           <div>
-            <IonDatetime
+            {/*<IonDatetime
               ref={datetime}
               presentation="date"
               multiple={true}
               onIonChange={(e) => dateChange(e)}
-            ></IonDatetime>
+            ></IonDatetime>*/}
 
             <IonicCalendar />
           </div>
