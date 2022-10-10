@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { addMonths } from 'date-fns';
 import controller from './controller/controller';
 import CalendarGrid from './components/CalendarGrid';
+import MonthSelector from './components/MonthSelector';
 
 const IonicCalendar = () => {
   const [firstRow, setFirstRow] = useState(['', '', '', '', '', '', '']);
@@ -25,6 +26,10 @@ const IonicCalendar = () => {
   const selectPreviousMonth = () => {
     console.log('previous month clicked');
     setMainDate(addMonths(mainDate, -1));
+  };
+
+  const openMonthSelector = () => {
+    console.log('open MonthSelector');
   };
 
   useEffect(() => {
