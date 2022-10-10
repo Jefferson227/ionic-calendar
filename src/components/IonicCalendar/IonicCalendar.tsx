@@ -19,12 +19,10 @@ const IonicCalendar = () => {
   const [mainDate, setMainDate] = useState(new Date());
 
   const selectNextMonth = () => {
-    console.log('next month clicked');
     setMainDate(addMonths(mainDate, 1));
   };
 
   const selectPreviousMonth = () => {
-    console.log('previous month clicked');
     setMainDate(addMonths(mainDate, -1));
   };
 
@@ -33,7 +31,6 @@ const IonicCalendar = () => {
   };
 
   useEffect(() => {
-    console.log('mainDate : ' + mainDate);
     setMonthName(controller.getMonthName(mainDate));
     setYear(controller.getYear(mainDate));
   }, [
@@ -61,14 +58,6 @@ const IonicCalendar = () => {
       mainDate,
     };
     controller.getCalendarDays(params);
-
-    console.log('calendar days loaded');
-    console.log(params.firstRow);
-    console.log(params.secondRow);
-    console.log(params.thirdRow);
-    console.log(params.fourthRow);
-    console.log(params.fifthRow);
-    console.log(params.sixthRow);
   }, [
     firstRow,
     setFirstRow,
