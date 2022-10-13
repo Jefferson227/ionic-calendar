@@ -127,7 +127,13 @@ const IonicCalendar = () => {
           />
         ) : null}
 
-        {bodyDisplay === 'month-selector' ? <MonthSelector /> : null}
+        {bodyDisplay === 'month-selector' ? (
+          <MonthSelector
+            mainDate={mainDate}
+            setMainDate={setMainDate}
+            setBodyDisplay={setBodyDisplay}
+          />
+        ) : null}
 
         {bodyDisplay === 'year-selector' ? <YearSelector /> : null}
       </div>
