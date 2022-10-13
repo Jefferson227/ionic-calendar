@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { addMonths } from 'date-fns';
 import controller from './controller/controller';
 import CalendarGrid from './components/CalendarGrid';
-import MonthSelector from './components/MonthSelector';
+import MonthSelector from './components/MonthSelector/MonthSelector';
 import YearSelector from './components/YearSelector';
 
 const IonicCalendar = () => {
