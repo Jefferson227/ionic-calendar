@@ -6,7 +6,7 @@ import { addMonths } from 'date-fns';
 import controller from './controller/controller';
 import CalendarGrid from './components/CalendarGrid';
 import MonthSelector from './components/MonthSelector/MonthSelector';
-import YearSelector from './components/YearSelector';
+import YearSelector from './components/YearSelector/YearSelector';
 
 const IonicCalendar = () => {
   const [firstRow, setFirstRow] = useState(['', '', '', '', '', '', '']);
