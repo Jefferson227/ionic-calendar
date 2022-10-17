@@ -14,7 +14,6 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({
   const setDate = (month: number) => {
     setMainDate(new Date(mainDate.getFullYear(), month, mainDate.getDate()));
     setBodyDisplay('calendar-grid');
-    console.log(mainDate);
   };
 
   return (
