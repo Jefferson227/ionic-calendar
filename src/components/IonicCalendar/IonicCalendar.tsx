@@ -29,8 +29,6 @@ const IonicCalendar = () => {
   };
 
   const toggleMonthSelector = () => {
-    console.log('toggle MonthSelector');
-
     if (bodyDisplay === 'month-selector') {
       setBodyDisplay('calendar-grid');
       return;
@@ -40,8 +38,6 @@ const IonicCalendar = () => {
   };
 
   const toggleYearSelector = () => {
-    console.log('toggle YearSelector');
-
     if (bodyDisplay === 'year-selector') {
       setBodyDisplay('calendar-grid');
       return;
