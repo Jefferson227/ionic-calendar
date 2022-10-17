@@ -1,12 +1,12 @@
 import './IonicCalendar.css';
 import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
-import { IonIcon } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { addMonths } from 'date-fns';
 import controller from './controller/controller';
 import CalendarGrid from './components/CalendarGrid';
 import MonthSelector from './components/MonthSelector/MonthSelector';
 import YearSelector from './components/YearSelector/YearSelector';
+import HeaderButtons from './components/HeaderButtons';
 
 const IonicCalendar = () => {
   const [firstRow, setFirstRow] = useState(['', '', '', '', '', '', '']);
@@ -94,21 +94,16 @@ const IonicCalendar = () => {
   return (
     <section className="ionic-calendar-container">
       <div className="header">
-        <button className="button button-arrow">
-          <IonIcon icon={chevronBackOutline} onClick={selectPreviousMonth} />
-        </button>
-
-        <button className="button button-month" onClick={toggleMonthSelector}>
-          {monthName}
-        </button>
-
-        <button className="button button-year" onClick={toggleYearSelector}>
-          {year}
-        </button>
-
-        <button className="button button-arrow">
-          <IonIcon icon={chevronForwardOutline} onClick={selectNextMonth} />
-        </button>
+        <HeaderButtons
+          iconBack={chevronBackOutline}
+          iconForward={chevronForwardOutline}
+          toggleMonthSelector={toggleMonthSelector}
+          toggleYearSelector={toggleYearSelector}
+          selectPreviousMonth={selectPreviousMonth}
+          selectNextMonth={selectNextMonth}
+          monthName={monthName}
+          year={year}
+        />
       </div>
 
       <div className="body">
