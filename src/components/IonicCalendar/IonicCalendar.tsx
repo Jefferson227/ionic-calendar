@@ -1,5 +1,10 @@
 import './IonicCalendar.css';
-import { chevronBackOutline, chevronForwardOutline } from 'ionicons/icons';
+import { IonIcon } from '@ionic/react';
+import {
+  chevronBackOutline,
+  chevronForwardOutline,
+  closeOutline,
+} from 'ionicons/icons';
 import { useEffect, useState } from 'react';
 import { addMonths } from 'date-fns';
 import controller from './controller/controller';
@@ -94,16 +99,25 @@ const IonicCalendar = () => {
   return (
     <section className="ionic-calendar-container">
       <div className="header">
-        <HeaderButtons
-          iconBack={chevronBackOutline}
-          iconForward={chevronForwardOutline}
-          toggleMonthSelector={toggleMonthSelector}
-          toggleYearSelector={toggleYearSelector}
-          selectPreviousMonth={selectPreviousMonth}
-          selectNextMonth={selectNextMonth}
-          monthName={monthName}
-          year={year}
-        />
+        {bodyDisplay === 'calendar-grid' ? (
+          <HeaderButtons
+            iconBack={chevronBackOutline}
+            iconForward={chevronForwardOutline}
+            toggleMonthSelector={toggleMonthSelector}
+            toggleYearSelector={toggleYearSelector}
+            selectPreviousMonth={selectPreviousMonth}
+            selectNextMonth={selectNextMonth}
+            monthName={monthName}
+            year={year}
+          />
+        ) : (
+          <button className="button button-close">
+            <IonIcon
+              icon={closeOutline}
+              onClick={() => setBodyDisplay('calendar-grid')}
+            />
+          </button>
+        )}
       </div>
 
       <div className="body">
