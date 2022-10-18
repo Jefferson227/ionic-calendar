@@ -15,7 +15,7 @@ import HeaderButtons from './components/HeaderButtons';
 import IonicCalendarProps from './interfaces/IonicCalendarProps';
 
 const IonicCalendar: React.FC<IonicCalendarProps> = ({
-  events,
+  getEvents,
   addEvent,
   removeEvent,
   updateEvent,
