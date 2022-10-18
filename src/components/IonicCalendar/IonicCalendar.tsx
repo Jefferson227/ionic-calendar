@@ -12,8 +12,14 @@ import CalendarGrid from './components/CalendarGrid';
 import MonthSelector from './components/MonthSelector/MonthSelector';
 import YearSelector from './components/YearSelector/YearSelector';
 import HeaderButtons from './components/HeaderButtons';
+import IonicCalendarProps from './interfaces/IonicCalendarProps';
 
-const IonicCalendar = () => {
+const IonicCalendar: React.FC<IonicCalendarProps> = ({
+  events,
+  addEvent,
+  removeEvent,
+  updateEvent,
+}) => {
   const [firstRow, setFirstRow] = useState(['', '', '', '', '', '', '']);
   const [secondRow, setSecondRow] = useState(['', '', '', '', '', '', '']);
   const [thirdRow, setThirdRow] = useState(['', '', '', '', '', '', '']);
