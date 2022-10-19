@@ -13,6 +13,7 @@ import MonthSelector from './components/MonthSelector/MonthSelector';
 import YearSelector from './components/YearSelector/YearSelector';
 import HeaderButtons from './components/HeaderButtons';
 import IonicCalendarProps from './interfaces/IonicCalendarProps';
+import Event from './interfaces/Event';
 
 const IonicCalendar: React.FC<IonicCalendarProps> = ({
   getEvents,
@@ -30,6 +31,7 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
   const [year, setYear] = useState('');
   const [mainDate, setMainDate] = useState(new Date());
   const [bodyDisplay, setBodyDisplay] = useState('calendar-grid');
+  const [events, setEvents] = useState(Array<Event>);
 
   const selectNextMonth = () => {
     setMainDate(addMonths(mainDate, 1));
@@ -101,6 +103,26 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
     mainDate,
     controller.getCalendarDays,
   ]);
+
+  useEffect(() => {
+    console.log('Initializing mocked events.');
+    const now = new Date();
+
+    const ev1 = {
+      description: 'Event 1',
+      start: new Date(now.getFullYear(), now.getMonth(), 10, 10, 0, 0),
+      end: new Date(now.getFullYear(), now.getMonth(), 10, 10, 30, 0),
+    };
+    const ev2 = {
+      description: 'Event 2',
+      start: new Date(now.getFullYear(), now.getMonth(), 15, 14, 0, 0),
+      end: new Date(now.getFullYear(), now.getMonth(), 15, 14, 30, 0),
+    };
+
+    const evs = [ev1, ev2];
+    setEvents(evs);
+    console.log('Mocked events added.');
+  }, []);
 
   return (
     <section className="ionic-calendar-container">

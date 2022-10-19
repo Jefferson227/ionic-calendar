@@ -1,5 +1,5 @@
 interface Event {
-  id: number;
+  id?: number;
   description: string;
   start: Date;
   end: Date;
