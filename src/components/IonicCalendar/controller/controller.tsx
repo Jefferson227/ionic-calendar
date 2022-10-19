@@ -1,37 +1,43 @@
 import { addDays, addMonths } from 'date-fns';
+import CalendarDay from '../interfaces/CalendarDay';
 
 const setRow = (
-  row: Array<string>,
-  rowFn: (arr: Array<string>) => void,
+  row: Array<CalendarDay>,
+  rowFn: (arr: Array<CalendarDay>) => void,
   date: Date
 ) => {
   const tempRow = row;
-  tempRow[date.getDay()] = date.getDate().toString();
+  tempRow[date.getDay()].day = date.getDate().toString();
+  tempRow[date.getDay()].hasEvents = false;
   rowFn(tempRow);
 };
 
-const resetRow = (row: Array<string>, rowFn: (arr: Array<string>) => void) => {
+const resetRow = (
+  row: Array<CalendarDay>,
+  rowFn: (arr: Array<CalendarDay>) => void
+) => {
   for (let i = 0; i < 7; i++) {
     const tempRow = row;
-    tempRow[i] = '';
+    tempRow[i].day = '';
+    tempRow[i].hasEvents = false;
 
     rowFn(tempRow);
   }
 };
 
 const getCalendarDays = (params: {
-  firstRow: Array<string>;
-  setFirstRow: (row: Array<string>) => void;
-  secondRow: Array<string>;
-  setSecondRow: (row: Array<string>) => void;
-  thirdRow: Array<string>;
-  setThirdRow: (row: Array<string>) => void;
-  fourthRow: Array<string>;
-  setFourthRow: (row: Array<string>) => void;
-  fifthRow: Array<string>;
-  setFifthRow: (row: Array<string>) => void;
-  sixthRow: Array<string>;
-  setSixthRow: (row: Array<string>) => void;
+  firstRow: Array<CalendarDay>;
+  setFirstRow: (row: Array<CalendarDay>) => void;
+  secondRow: Array<CalendarDay>;
+  setSecondRow: (row: Array<CalendarDay>) => void;
+  thirdRow: Array<CalendarDay>;
+  setThirdRow: (row: Array<CalendarDay>) => void;
+  fourthRow: Array<CalendarDay>;
+  setFourthRow: (row: Array<CalendarDay>) => void;
+  fifthRow: Array<CalendarDay>;
+  setFifthRow: (row: Array<CalendarDay>) => void;
+  sixthRow: Array<CalendarDay>;
+  setSixthRow: (row: Array<CalendarDay>) => void;
   mainDate: Date;
 }) => {
   const selectedDate = params.mainDate || new Date();
@@ -68,12 +74,12 @@ const getCalendarDays = (params: {
 
     calendarDay = addDays(calendarDay, 1);
 
-    if (params.firstRow[6].length !== 0 && currentRow === 1) currentRow++;
-    if (params.secondRow[6].length !== 0 && currentRow === 2) currentRow++;
-    if (params.thirdRow[6].length !== 0 && currentRow === 3) currentRow++;
-    if (params.fourthRow[6].length !== 0 && currentRow === 4) currentRow++;
-    if (params.fifthRow[6].length !== 0 && currentRow === 5) currentRow++;
-    if (params.sixthRow[6].length !== 0 && currentRow === 6) currentRow++;
+    if (params.firstRow[6].day !== '' && currentRow === 1) currentRow++;
+    if (params.secondRow[6].day !== '' && currentRow === 2) currentRow++;
+    if (params.thirdRow[6].day !== '' && currentRow === 3) currentRow++;
+    if (params.fourthRow[6].day !== '' && currentRow === 4) currentRow++;
+    if (params.fifthRow[6].day !== '' && currentRow === 5) currentRow++;
+    if (params.sixthRow[6].day !== '' && currentRow === 6) currentRow++;
   }
 };
 
@@ -116,8 +122,21 @@ const getYear = (dateParam?: Date) => {
   return date.getFullYear().toString();
 };
 
+const initializeRow = () => {
+  return [
+    { day: '', hasEvents: false },
+    { day: '', hasEvents: false },
+    { day: '', hasEvents: false },
+    { day: '', hasEvents: false },
+    { day: '', hasEvents: false },
+    { day: '', hasEvents: false },
+    { day: '', hasEvents: false },
+  ];
+};
+
 export default {
   getCalendarDays,
   getMonthName,
   getYear,
+  initializeRow,
 };

@@ -21,12 +21,12 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
   removeEvent,
   updateEvent,
 }) => {
-  const [firstRow, setFirstRow] = useState(['', '', '', '', '', '', '']);
-  const [secondRow, setSecondRow] = useState(['', '', '', '', '', '', '']);
-  const [thirdRow, setThirdRow] = useState(['', '', '', '', '', '', '']);
-  const [fourthRow, setFourthRow] = useState(['', '', '', '', '', '', '']);
-  const [fifthRow, setFifthRow] = useState(['', '', '', '', '', '', '']);
-  const [sixthRow, setSixthRow] = useState(['', '', '', '', '', '', '']);
+  const [firstRow, setFirstRow] = useState(controller.initializeRow());
+  const [secondRow, setSecondRow] = useState(controller.initializeRow());
+  const [thirdRow, setThirdRow] = useState(controller.initializeRow());
+  const [fourthRow, setFourthRow] = useState(controller.initializeRow());
+  const [fifthRow, setFifthRow] = useState(controller.initializeRow());
+  const [sixthRow, setSixthRow] = useState(controller.initializeRow());
   const [monthName, setMonthName] = useState('');
   const [year, setYear] = useState('');
   const [mainDate, setMainDate] = useState(new Date());
