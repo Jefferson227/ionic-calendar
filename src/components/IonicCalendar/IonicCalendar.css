@@ -50,11 +50,25 @@
   text-align: center;
   width: 100%;
   padding: 10px 0 10px 0;
+  position: relative;
+}
+
+.ionic-calendar-container .body .calendar-grid .row .day.day-circled::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  background: orange;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  transform: translate(24%, 12%);
 }
 
 .ionic-calendar-container .body .calendar-grid .row .day .button-day {
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 .ionic-calendar-container .footer {
