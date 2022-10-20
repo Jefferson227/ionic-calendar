@@ -85,6 +85,7 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
       sixthRow,
       setSixthRow,
       mainDate,
+      events
     };
     controller.getCalendarDays(params);
   }, [
@@ -101,6 +102,7 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
     sixthRow,
     setSixthRow,
     mainDate,
+    events,
     controller.getCalendarDays,
   ]);
 

@@ -1,14 +1,33 @@
-import { addDays, addMonths } from 'date-fns';
+import { addDays, addMonths, format } from 'date-fns';
 import CalendarDay from '../interfaces/CalendarDay';
+import Event from '../interfaces/Event';
+
+const checkEvents = (date: Date, events: Array<Event>) => {
+  const formattedDate = format(date, 'yyyy-MM-dd');
+  let hasEvents = false;
+
+  for (let i = 0; i < events.length; i++) {
+    const event = events[i];
+    const formattedEventDate = format(event.start, 'yyyy-MM-dd');
+
+    if (formattedDate === formattedEventDate) {
+      hasEvents = true;
+      break;
+    }
+  }
+
+  return hasEvents;
+};
 
 const setRow = (
   row: Array<CalendarDay>,
   rowFn: (arr: Array<CalendarDay>) => void,
-  date: Date
+  date: Date,
+  events: Array<Event>
 ) => {
   const tempRow = row;
   tempRow[date.getDay()].day = date.getDate().toString();
-  tempRow[date.getDay()].hasEvents = false;
+  tempRow[date.getDay()].hasEvents = checkEvents(date, events);
   rowFn(tempRow);
 };
 
@@ -39,6 +58,7 @@ const getCalendarDays = (params: {
   sixthRow: Array<CalendarDay>;
   setSixthRow: (row: Array<CalendarDay>) => void;
   mainDate: Date;
+  events: Array<Event>;
 }) => {
   const selectedDate = params.mainDate || new Date();
   let calendarDay = new Date(
@@ -59,17 +79,17 @@ const getCalendarDays = (params: {
 
   while (calendarDay.getTime() <= calendarLastDay.getTime()) {
     if (currentRow === 1) {
-      setRow(params.firstRow, params.setFirstRow, calendarDay);
+      setRow(params.firstRow, params.setFirstRow, calendarDay, params.events);
     } else if (currentRow === 2) {
-      setRow(params.secondRow, params.setSecondRow, calendarDay);
+      setRow(params.secondRow, params.setSecondRow, calendarDay, params.events);
     } else if (currentRow === 3) {
-      setRow(params.thirdRow, params.setThirdRow, calendarDay);
+      setRow(params.thirdRow, params.setThirdRow, calendarDay, params.events);
     } else if (currentRow === 4) {
-      setRow(params.fourthRow, params.setFourthRow, calendarDay);
+      setRow(params.fourthRow, params.setFourthRow, calendarDay, params.events);
     } else if (currentRow === 5) {
-      setRow(params.fifthRow, params.setFifthRow, calendarDay);
+      setRow(params.fifthRow, params.setFifthRow, calendarDay, params.events);
     } else if (currentRow === 6) {
-      setRow(params.sixthRow, params.setSixthRow, calendarDay);
+      setRow(params.sixthRow, params.setSixthRow, calendarDay, params.events);
     }
 
     calendarDay = addDays(calendarDay, 1);
