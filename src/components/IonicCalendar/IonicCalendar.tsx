@@ -62,6 +62,7 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
   useEffect(() => {
     setMonthName(controller.getMonthName(mainDate));
     setYear(controller.getYear(mainDate));
+    console.log('MonthName and year set.');
   }, [
     mainDate,
     setMonthName,
@@ -88,6 +89,7 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
       events
     };
     controller.getCalendarDays(params);
+    console.log('Calendar days loaded.');
   }, [
     firstRow,
     setFirstRow,
@@ -107,7 +109,6 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
   ]);
 
   useEffect(() => {
-    console.log('Initializing mocked events.');
     const now = new Date();
 
     const ev1 = {
