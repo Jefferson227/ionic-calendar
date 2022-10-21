@@ -153,12 +153,7 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
       <div className="body">
         {bodyDisplay === 'calendar-grid' ? (
           <CalendarGrid
-            firstRow={firstRow}
-            secondRow={secondRow}
-            thirdRow={thirdRow}
-            fourthRow={fourthRow}
-            fifthRow={fifthRow}
-            sixthRow={sixthRow}
+            rows={[firstRow, secondRow, thirdRow, fourthRow, fifthRow, sixthRow]}
           />
         ) : null}
 
