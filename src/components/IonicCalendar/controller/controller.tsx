@@ -25,10 +25,9 @@ const setRow = (
   date: Date,
   events: Array<Event>
 ) => {
-  const tempRow = row;
-  tempRow[date.getDay()].day = date.getDate().toString();
-  tempRow[date.getDay()].hasEvents = checkEvents(date, events);
-  rowFn(tempRow);
+  row[date.getDay()].day = date.getDate().toString();
+  row[date.getDay()].hasEvents = checkEvents(date, events);
+  rowFn(row);
 };
 
 const resetRow = (
