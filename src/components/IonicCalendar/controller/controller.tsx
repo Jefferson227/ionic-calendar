@@ -85,14 +85,19 @@ const setCalendarDays = (params: {
       setRow(sixthRow, params.setSixthRow, calendarDay, params.events);
     }
 
-    calendarDay = addDays(calendarDay, 1);
+    if (
+      calendarDay.getDay() === 6 &&
+      (currentRow === 1 ||
+        currentRow === 2 ||
+        currentRow === 3 ||
+        currentRow === 4 ||
+        currentRow === 5 ||
+        currentRow === 6)
+    ) {
+      currentRow++;
+    }
 
-    if (firstRow[6].day !== '' && currentRow === 1) currentRow++;
-    if (secondRow[6].day !== '' && currentRow === 2) currentRow++;
-    if (thirdRow[6].day !== '' && currentRow === 3) currentRow++;
-    if (fourthRow[6].day !== '' && currentRow === 4) currentRow++;
-    if (fifthRow[6].day !== '' && currentRow === 5) currentRow++;
-    if (sixthRow[6].day !== '' && currentRow === 6) currentRow++;
+    calendarDay = addDays(calendarDay, 1);
   }
 };
 
