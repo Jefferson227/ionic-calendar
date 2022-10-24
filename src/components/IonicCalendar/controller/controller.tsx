@@ -30,18 +30,24 @@ const setRow = (
   rowFn(row);
 };
 
-const getCalendarDays = (params: {
-  firstRow: Array<CalendarDay>;
+const initializeRow = () => {
+  return [
+    { day: '', hasEvents: false },
+    { day: '', hasEvents: false },
+    { day: '', hasEvents: false },
+    { day: '', hasEvents: false },
+    { day: '', hasEvents: false },
+    { day: '', hasEvents: false },
+    { day: '', hasEvents: false },
+  ];
+};
+
+const setCalendarDays = (params: {
   setFirstRow: (row: Array<CalendarDay>) => void;
-  secondRow: Array<CalendarDay>;
   setSecondRow: (row: Array<CalendarDay>) => void;
-  thirdRow: Array<CalendarDay>;
   setThirdRow: (row: Array<CalendarDay>) => void;
-  fourthRow: Array<CalendarDay>;
   setFourthRow: (row: Array<CalendarDay>) => void;
-  fifthRow: Array<CalendarDay>;
   setFifthRow: (row: Array<CalendarDay>) => void;
-  sixthRow: Array<CalendarDay>;
   setSixthRow: (row: Array<CalendarDay>) => void;
   mainDate: Date;
   events: Array<Event>;
@@ -57,36 +63,36 @@ const getCalendarDays = (params: {
   const calendarLastDay = addDays(addMonths(calendarDay, 1), -1);
   let currentRow = 1;
 
-  params.setFirstRow([]);
-  params.setSecondRow([]);
-  params.setThirdRow([]);
-  params.setFourthRow([]);
-  params.setFifthRow([]);
-  params.setSixthRow([]);
+  let firstRow = initializeRow();
+  let secondRow = initializeRow();
+  let thirdRow = initializeRow();
+  let fourthRow = initializeRow();
+  let fifthRow = initializeRow();
+  let sixthRow = initializeRow();
 
   while (calendarDay.getTime() <= calendarLastDay.getTime()) {
     if (currentRow === 1) {
-      setRow(params.firstRow, params.setFirstRow, calendarDay, params.events);
+      setRow(firstRow, params.setFirstRow, calendarDay, params.events);
     } else if (currentRow === 2) {
-      setRow(params.secondRow, params.setSecondRow, calendarDay, params.events);
+      setRow(secondRow, params.setSecondRow, calendarDay, params.events);
     } else if (currentRow === 3) {
-      setRow(params.thirdRow, params.setThirdRow, calendarDay, params.events);
+      setRow(thirdRow, params.setThirdRow, calendarDay, params.events);
     } else if (currentRow === 4) {
-      setRow(params.fourthRow, params.setFourthRow, calendarDay, params.events);
+      setRow(fourthRow, params.setFourthRow, calendarDay, params.events);
     } else if (currentRow === 5) {
-      setRow(params.fifthRow, params.setFifthRow, calendarDay, params.events);
+      setRow(fifthRow, params.setFifthRow, calendarDay, params.events);
     } else if (currentRow === 6) {
-      setRow(params.sixthRow, params.setSixthRow, calendarDay, params.events);
+      setRow(sixthRow, params.setSixthRow, calendarDay, params.events);
     }
 
     calendarDay = addDays(calendarDay, 1);
 
-    if (params.firstRow[6].day !== '' && currentRow === 1) currentRow++;
-    if (params.secondRow[6].day !== '' && currentRow === 2) currentRow++;
-    if (params.thirdRow[6].day !== '' && currentRow === 3) currentRow++;
-    if (params.fourthRow[6].day !== '' && currentRow === 4) currentRow++;
-    if (params.fifthRow[6].day !== '' && currentRow === 5) currentRow++;
-    if (params.sixthRow[6].day !== '' && currentRow === 6) currentRow++;
+    if (firstRow[6].day !== '' && currentRow === 1) currentRow++;
+    if (secondRow[6].day !== '' && currentRow === 2) currentRow++;
+    if (thirdRow[6].day !== '' && currentRow === 3) currentRow++;
+    if (fourthRow[6].day !== '' && currentRow === 4) currentRow++;
+    if (fifthRow[6].day !== '' && currentRow === 5) currentRow++;
+    if (sixthRow[6].day !== '' && currentRow === 6) currentRow++;
   }
 };
 
@@ -129,20 +135,8 @@ const getYear = (dateParam?: Date) => {
   return date.getFullYear().toString();
 };
 
-const initializeRow = () => {
-  return [
-    { day: '', hasEvents: false },
-    { day: '', hasEvents: false },
-    { day: '', hasEvents: false },
-    { day: '', hasEvents: false },
-    { day: '', hasEvents: false },
-    { day: '', hasEvents: false },
-    { day: '', hasEvents: false },
-  ];
-};
-
 export default {
-  getCalendarDays,
+  setCalendarDays,
   getMonthName,
   getYear,
   initializeRow,

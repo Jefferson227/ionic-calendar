@@ -90,24 +90,20 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
 
   useEffect(() => {
     const params = {
-      firstRow,
       setFirstRow,
-      secondRow,
       setSecondRow,
-      thirdRow,
       setThirdRow,
-      fourthRow,
       setFourthRow,
-      fifthRow,
       setFifthRow,
-      sixthRow,
       setSixthRow,
       mainDate,
       events
     };
-    controller.getCalendarDays(params);
-    console.log('First loading calendar days.');
+    controller.setCalendarDays(params);
+    console.log('Loading calendar days.');
   }, [
+    mainDate,
+    events
   ]);
 
   return (
