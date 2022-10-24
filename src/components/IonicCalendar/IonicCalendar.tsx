@@ -66,9 +66,7 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
   }, [
     mainDate,
     setMonthName,
-    controller.getMonthName,
     setYear,
-    controller.getYear,
   ]);
 
   useEffect(() => {
