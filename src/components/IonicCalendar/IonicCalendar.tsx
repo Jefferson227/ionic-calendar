@@ -72,43 +72,6 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
   ]);
 
   useEffect(() => {
-    const params = {
-      firstRow,
-      setFirstRow,
-      secondRow,
-      setSecondRow,
-      thirdRow,
-      setThirdRow,
-      fourthRow,
-      setFourthRow,
-      fifthRow,
-      setFifthRow,
-      sixthRow,
-      setSixthRow,
-      mainDate,
-      events
-    };
-    controller.getCalendarDays(params);
-    console.log('Calendar days loaded.');
-  }, [
-    firstRow,
-    setFirstRow,
-    secondRow,
-    setSecondRow,
-    thirdRow,
-    setThirdRow,
-    fourthRow,
-    setFourthRow,
-    fifthRow,
-    setFifthRow,
-    sixthRow,
-    setSixthRow,
-    mainDate,
-    events,
-    controller.getCalendarDays,
-  ]);
-
-  useEffect(() => {
     const now = new Date();
 
     const ev1 = {
@@ -126,6 +89,28 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
     setEvents(evs);
     console.log('Mocked events added.');
   }, []);
+
+  useEffect(() => {
+    const params = {
+      firstRow,
+      setFirstRow,
+      secondRow,
+      setSecondRow,
+      thirdRow,
+      setThirdRow,
+      fourthRow,
+      setFourthRow,
+      fifthRow,
+      setFifthRow,
+      sixthRow,
+      setSixthRow,
+      mainDate,
+      events
+    };
+    controller.getCalendarDays(params);
+    console.log('First loading calendar days.');
+  }, [
+  ]);
 
   return (
     <section className="ionic-calendar-container">
