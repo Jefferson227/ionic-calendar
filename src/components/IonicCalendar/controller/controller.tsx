@@ -30,19 +30,6 @@ const setRow = (
   rowFn(row);
 };
 
-const resetRow = (
-  row: Array<CalendarDay>,
-  rowFn: (arr: Array<CalendarDay>) => void
-) => {
-  for (let i = 0; i < 7; i++) {
-    const tempRow = row;
-    tempRow[i].day = '';
-    tempRow[i].hasEvents = false;
-
-    rowFn(tempRow);
-  }
-};
-
 const getCalendarDays = (params: {
   firstRow: Array<CalendarDay>;
   setFirstRow: (row: Array<CalendarDay>) => void;
@@ -70,12 +57,12 @@ const getCalendarDays = (params: {
   const calendarLastDay = addDays(addMonths(calendarDay, 1), -1);
   let currentRow = 1;
 
-  resetRow(params.firstRow, params.setFirstRow);
-  resetRow(params.secondRow, params.setSecondRow);
-  resetRow(params.thirdRow, params.setThirdRow);
-  resetRow(params.fourthRow, params.setFourthRow);
-  resetRow(params.fifthRow, params.setFifthRow);
-  resetRow(params.sixthRow, params.setSixthRow);
+  params.setFirstRow([]);
+  params.setSecondRow([]);
+  params.setThirdRow([]);
+  params.setFourthRow([]);
+  params.setFifthRow([]);
+  params.setSixthRow([]);
 
   while (calendarDay.getTime() <= calendarLastDay.getTime()) {
     if (currentRow === 1) {
