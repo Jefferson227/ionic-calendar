@@ -19,15 +19,9 @@ const checkEvents = (date: Date, events: Array<Event>) => {
   return hasEvents;
 };
 
-const setRow = (
-  row: Array<CalendarDay>,
-  rowFn: (arr: Array<CalendarDay>) => void,
-  date: Date,
-  events: Array<Event>
-) => {
+const setRow = (row: Array<CalendarDay>, date: Date, events: Array<Event>) => {
   row[date.getDay()].day = date.getDate().toString();
   row[date.getDay()].hasEvents = checkEvents(date, events);
-  rowFn(row);
 };
 
 const initializeRow = () => {
@@ -72,17 +66,17 @@ const setCalendarDays = (params: {
 
   while (calendarDay.getTime() <= calendarLastDay.getTime()) {
     if (currentRow === 1) {
-      setRow(firstRow, params.setFirstRow, calendarDay, params.events);
+      setRow(firstRow, calendarDay, params.events);
     } else if (currentRow === 2) {
-      setRow(secondRow, params.setSecondRow, calendarDay, params.events);
+      setRow(secondRow, calendarDay, params.events);
     } else if (currentRow === 3) {
-      setRow(thirdRow, params.setThirdRow, calendarDay, params.events);
+      setRow(thirdRow, calendarDay, params.events);
     } else if (currentRow === 4) {
-      setRow(fourthRow, params.setFourthRow, calendarDay, params.events);
+      setRow(fourthRow, calendarDay, params.events);
     } else if (currentRow === 5) {
-      setRow(fifthRow, params.setFifthRow, calendarDay, params.events);
+      setRow(fifthRow, calendarDay, params.events);
     } else if (currentRow === 6) {
-      setRow(sixthRow, params.setSixthRow, calendarDay, params.events);
+      setRow(sixthRow, calendarDay, params.events);
     }
 
     if (
@@ -99,6 +93,13 @@ const setCalendarDays = (params: {
 
     calendarDay = addDays(calendarDay, 1);
   }
+
+  params.setFirstRow(firstRow);
+  params.setSecondRow(secondRow);
+  params.setThirdRow(thirdRow);
+  params.setFourthRow(fourthRow);
+  params.setFifthRow(fifthRow);
+  params.setSixthRow(sixthRow);
 };
 
 const getMonthName = (dateParam?: Date) => {
