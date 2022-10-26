@@ -110,7 +110,9 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
               fifthRow,
               sixthRow,
             ]}
-            onClickOnDay={onClickOnDay}
+            onClickOnDay={
+              typeof onClickOnDay === 'function' ? onClickOnDay : () => {}
+            }
           />
         ) : null}
 

@@ -27,7 +27,7 @@ const Page: React.FC = () => {
     console.log('date changed ' + event.target.value);
   };
   const [events, setEvents] = useState(Array<Event>);
-  const onClickOnDay = () => console.log('clicked on day.');
+  const onClickOnDay = (day: string) => console.log('clicked on day ' + day);
 
   useEffect(() => {
     if (!datetime.current) return;
