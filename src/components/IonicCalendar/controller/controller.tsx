@@ -23,18 +23,19 @@ const checkEvents = (date: Date, events?: Array<Event>) => {
 
 const setRow = (row: Array<CalendarDay>, date: Date, events?: Array<Event>) => {
   row[date.getDay()].day = date.getDate().toString();
+  row[date.getDay()].fullDate = format(date, 'yyyy-MM-dd');
   row[date.getDay()].hasEvents = checkEvents(date, events);
 };
 
 const initializeRow = () => {
   return [
-    { day: '', hasEvents: false },
-    { day: '', hasEvents: false },
-    { day: '', hasEvents: false },
-    { day: '', hasEvents: false },
-    { day: '', hasEvents: false },
-    { day: '', hasEvents: false },
-    { day: '', hasEvents: false },
+    { day: '', fullDate: '', hasEvents: false },
+    { day: '', fullDate: '', hasEvents: false },
+    { day: '', fullDate: '', hasEvents: false },
+    { day: '', fullDate: '', hasEvents: false },
+    { day: '', fullDate: '', hasEvents: false },
+    { day: '', fullDate: '', hasEvents: false },
+    { day: '', fullDate: '', hasEvents: false },
   ];
 };
 

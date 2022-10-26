@@ -2,7 +2,7 @@ import CalendarDay from '../interfaces/CalendarDay';
 
 interface CalendarGridProps {
   rows: Array<Array<CalendarDay>>;
-  onClickOnDay: (day: string) => void;
+  onClickOnDay: (date: string) => void;
 }
 
 const CalendarGrid: React.FC<CalendarGridProps> = ({ rows, onClickOnDay }) => {
@@ -32,7 +32,7 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({ rows, onClickOnDay }) => {
                   >
                     <button
                       className="button button-day"
-                      onClick={() => onClickOnDay(calendarDay.day)}
+                      onClick={() => onClickOnDay(calendarDay.fullDate)}
                     >
                       {calendarDay.day}
                     </button>
