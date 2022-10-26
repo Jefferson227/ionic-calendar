@@ -27,6 +27,7 @@ const Page: React.FC = () => {
     console.log('date changed ' + event.target.value);
   };
   const [events, setEvents] = useState(Array<Event>);
+  const onClickOnDay = () => console.log('clicked on day.');
 
   useEffect(() => {
     if (!datetime.current) return;
@@ -78,7 +79,7 @@ const Page: React.FC = () => {
               onIonChange={(e) => dateChange(e)}
             ></IonDatetime>*/}
 
-            <IonicCalendar events={events} setEvents={setEvents} />
+            <IonicCalendar events={events} setEvents={setEvents} onClickOnDay={onClickOnDay} />
           </div>
         ) : (
           <ExploreContainer name={name} />

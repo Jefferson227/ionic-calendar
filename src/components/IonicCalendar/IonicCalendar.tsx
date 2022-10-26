@@ -14,7 +14,11 @@ import YearSelector from './components/YearSelector/YearSelector';
 import HeaderButtons from './components/HeaderButtons';
 import IonicCalendarProps from './interfaces/IonicCalendarProps';
 
-const IonicCalendar: React.FC<IonicCalendarProps> = ({ events, setEvents }) => {
+const IonicCalendar: React.FC<IonicCalendarProps> = ({
+  events,
+  setEvents,
+  onClickOnDay,
+}) => {
   const [firstRow, setFirstRow] = useState(controller.initializeRow());
   const [secondRow, setSecondRow] = useState(controller.initializeRow());
   const [thirdRow, setThirdRow] = useState(controller.initializeRow());
@@ -106,6 +110,7 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({ events, setEvents }) => {
               fifthRow,
               sixthRow,
             ]}
+            onClickOnDay={onClickOnDay}
           />
         ) : null}
 

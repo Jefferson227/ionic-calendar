@@ -2,9 +2,10 @@ import CalendarDay from '../interfaces/CalendarDay';
 
 interface CalendarGridProps {
   rows: Array<Array<CalendarDay>>;
+  onClickOnDay?: (param: any) => void;
 }
 
-const CalendarGrid: React.FC<CalendarGridProps> = ({ rows }) => {
+const CalendarGrid: React.FC<CalendarGridProps> = ({ rows, onClickOnDay }) => {
   return (
     <>
       <div className="weekdays">
@@ -29,7 +30,10 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({ rows }) => {
                     }`}
                     key={calendarDayIndex}
                   >
-                    <button className="button button-day">
+                    <button
+                      className="button button-day"
+                      onClick={onClickOnDay}
+                    >
                       {calendarDay.day}
                     </button>
                   </div>
