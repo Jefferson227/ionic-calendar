@@ -6,6 +6,8 @@ interface CalendarGridProps {
 }
 
 const CalendarGrid: React.FC<CalendarGridProps> = ({ rows, onClickOnDay }) => {
+  const test = () => console.log('test');
+
   return (
     <>
       <div className="weekdays">
@@ -32,7 +34,10 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({ rows, onClickOnDay }) => {
                   >
                     <button
                       className="button button-day"
-                      onClick={() => onClickOnDay(calendarDay.fullDate)}
+                      onClick={() => {
+                        onClickOnDay(calendarDay.fullDate);
+                        test();
+                      }}
                     >
                       {calendarDay.day}
                     </button>
