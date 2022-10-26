@@ -2,9 +2,11 @@ import { addDays, addMonths, format } from 'date-fns';
 import CalendarDay from '../interfaces/CalendarDay';
 import Event from '../interfaces/Event';
 
-const checkEvents = (date: Date, events: Array<Event>) => {
+const checkEvents = (date: Date, events?: Array<Event>) => {
   const formattedDate = format(date, 'yyyy-MM-dd');
   let hasEvents = false;
+
+  if (!events) return false;
 
   for (let i = 0; i < events.length; i++) {
     const event = events[i];
@@ -19,7 +21,7 @@ const checkEvents = (date: Date, events: Array<Event>) => {
   return hasEvents;
 };
 
-const setRow = (row: Array<CalendarDay>, date: Date, events: Array<Event>) => {
+const setRow = (row: Array<CalendarDay>, date: Date, events?: Array<Event>) => {
   row[date.getDay()].day = date.getDate().toString();
   row[date.getDay()].hasEvents = checkEvents(date, events);
 };
@@ -44,7 +46,7 @@ const setCalendarDays = (params: {
   setFifthRow: (row: Array<CalendarDay>) => void;
   setSixthRow: (row: Array<CalendarDay>) => void;
   mainDate: Date;
-  events: Array<Event>;
+  events?: Array<Event>;
 }) => {
   const selectedDate = params.mainDate || new Date();
   let calendarDay = new Date(
