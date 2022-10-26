@@ -52,7 +52,6 @@ const setCalendarDays = (params: {
     selectedDate.getMonth(),
     1
   );
-  console.log('events.length: ' + params.events.length);
 
   const calendarLastDay = addDays(addMonths(calendarDay, 1), -1);
   let currentRow = 1;

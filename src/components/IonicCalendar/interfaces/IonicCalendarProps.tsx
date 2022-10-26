@@ -1,10 +1,8 @@
 import Event from './Event';
 
 interface IonicCalendarProps {
-  getEvents?: (startDate?: Date, endDate?: Date) => Array<Event>;
-  addEvent?: (event: Event) => void;
-  removeEvent?: (event: Event) => void;
-  updateEvent?: (event: Event) => void;
+  events: Array<Event>;
+  setEvents: (event: Array<Event>) => void;
 }
 
 export default IonicCalendarProps;
