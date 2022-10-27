@@ -1,4 +1,5 @@
 import CalendarDay from '../interfaces/CalendarDay';
+import { format } from 'date-fns';
 
 interface CalendarGridProps {
   rows: Array<Array<CalendarDay>>;
@@ -28,7 +29,13 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({ rows, onClickOnDay }) => {
                 return (
                   <div
                     className={`day ${
-                      calendarDay.hasEvents ? 'day-circled' : ''
+                      calendarDay.hasEvents
+                        ? 'day-circled day-circled-event'
+                        : ''
+                    } ${
+                      calendarDay.fullDate === format(new Date(), 'yyyy-MM-dd')
+                        ? 'day-circled day-circled-today'
+                        : ''
                     }`}
                     key={calendarDayIndex}
                   >

@@ -58,11 +58,22 @@
   content: '';
   top: 0;
   left: 0;
-  background: orange;
   width: 32px;
   height: 32px;
   border-radius: 100%;
   transform: translate(24%, 12%);
+}
+
+.ionic-calendar-container .body .calendar-grid .row .day.day-circled.day-circled-event::before {
+  background: orange;
+}
+
+.ionic-calendar-container .body .calendar-grid .row .day.day-circled.day-circled-today::before {
+  background: #008fff;
+}
+
+.ionic-calendar-container .body .calendar-grid .row .day.day-circled.day-circled-event.day-circled-today::before {
+  background: orange;
 }
 
 .ionic-calendar-container .body .calendar-grid .row .day .button-day {
