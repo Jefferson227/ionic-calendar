@@ -1,5 +1,6 @@
 import CalendarDay from '../interfaces/CalendarDay';
 import { format } from 'date-fns';
+import { useState } from 'react';
 
 interface CalendarGridProps {
   rows: Array<Array<CalendarDay>>;
@@ -7,7 +8,15 @@ interface CalendarGridProps {
 }
 
 const CalendarGrid: React.FC<CalendarGridProps> = ({ rows, onClickOnDay }) => {
-  const test = () => console.log('test');
+  const [selectedDate, setSelectedDate] = useState('');
+  const selectDate = (date: string) => {
+    if (selectedDate === date) {
+      setSelectedDate('');
+      return;
+    }
+
+    setSelectedDate(date);
+  };
 
   return (
     <>
@@ -36,6 +45,11 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({ rows, onClickOnDay }) => {
                       calendarDay.fullDate === format(new Date(), 'yyyy-MM-dd')
                         ? 'day-circled day-circled-today'
                         : ''
+                    } ${
+                      calendarDay.fullDate === selectedDate &&
+                      selectedDate !== ''
+                        ? 'day-circled day-circled-selected'
+                        : ''
                     }`}
                     key={calendarDayIndex}
                   >
@@ -43,7 +57,7 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({ rows, onClickOnDay }) => {
                       className="button button-day"
                       onClick={() => {
                         onClickOnDay(calendarDay.fullDate);
-                        test();
+                        selectDate(calendarDay.fullDate);
                       }}
                     >
                       {calendarDay.day}

@@ -72,6 +72,10 @@
   background: #008fff;
 }
 
+.ionic-calendar-container .body .calendar-grid .row .day.day-circled.day-circled-selected::before {
+  outline: 1px solid orange;
+}
+
 .ionic-calendar-container .body .calendar-grid .row .day.day-circled.day-circled-event.day-circled-today::before {
   background: orange;
 }
