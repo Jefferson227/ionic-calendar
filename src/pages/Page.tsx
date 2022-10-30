@@ -18,9 +18,10 @@ import { useParams } from 'react-router';
 import { parse, format } from 'date-fns';
 import ExploreContainer from '../components/ExploreContainer';
 import IonicCalendar from '../components/IonicCalendar/IonicCalendar';
+import { v4 as uuid } from 'uuid';
 import './Page.css';
 interface Event {
-  id?: number;
+  id?: string;
   description: string;
   start: Date;
   end: Date;
@@ -42,6 +43,7 @@ const Page: React.FC = () => {
     const date = parse(selectedDate, 'yyyy-MM-dd', new Date());
 
     const ev1 = {
+      id: uuid(),
       description: description,
       start: new Date(date.getFullYear(), date.getMonth(), date.getDate(), startDate, 0, 0),
       end: new Date(date.getFullYear(), date.getMonth(), date.getDate(), endDate, 30, 0),
@@ -72,11 +74,13 @@ const Page: React.FC = () => {
     const now = new Date();
 
     const ev1 = {
+      id: uuid(),
       description: 'Event 1',
       start: new Date(now.getFullYear(), now.getMonth(), 10, 10, 0, 0),
       end: new Date(now.getFullYear(), now.getMonth(), 10, 10, 30, 0),
     };
     const ev2 = {
+      id: uuid(),
       description: 'Event 2',
       start: new Date(now.getFullYear(), now.getMonth(), 15, 14, 0, 0),
       end: new Date(now.getFullYear(), now.getMonth(), 15, 14, 30, 0),
