@@ -21,7 +21,7 @@ import IonicCalendar from '../components/IonicCalendar/IonicCalendar';
 import { v4 as uuid } from 'uuid';
 import './Page.css';
 interface Event {
-  id?: string;
+  id: string;
   description: string;
   start: Date;
   end: Date;
@@ -51,6 +51,9 @@ const Page: React.FC = () => {
 
     setEvents([...events, ev1]);
     console.log('Mocked events added out of the component.');
+  };
+  const deleteEvent = (eventId: string) => {
+    setEvents(events.filter(e => e.id !== eventId));
   };
   const addDescription = (ev: any) => {
     const val = (ev.target as HTMLInputElement).value;
@@ -156,7 +159,7 @@ const Page: React.FC = () => {
                   ? events
                     .filter(event => format(event.start, 'yyyy-MM-dd') === selectedDate)
                     .map((event, index) =>
-                      <IonItem key={index}>Description: {event.description} - start: {format(event.start, 'HH:mm')} - end: {format(event.end, 'HH:mm')}</IonItem>)
+                    <IonItem key={index}>Description: {event.description} - start: {format(event.start, 'HH:mm')} - end: {format(event.end, 'HH:mm')}&nbsp;<button onClick={() => deleteEvent(event.id)}>Delete</button></IonItem>)
                   : <IonItem>No events.</IonItem>
               }
             </IonList>
