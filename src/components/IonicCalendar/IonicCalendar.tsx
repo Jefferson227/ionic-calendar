@@ -55,6 +55,10 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
     setBodyDisplay('year-selector');
   };
 
+  const goToday = () => {
+    setMainDate(new Date());
+  };
+
   useEffect(() => {
     setMonthName(controller.getMonthName(mainDate));
     setYear(controller.getYear(mainDate));
@@ -133,7 +137,9 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
       </div>
 
       <div className="footer">
-        <IonButton className="button-today">Today</IonButton>
+        <IonButton className="button-today" onClick={goToday}>
+          Today
+        </IonButton>
       </div>
     </section>
   );
