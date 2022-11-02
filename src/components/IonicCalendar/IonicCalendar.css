@@ -1,6 +1,6 @@
 .ionic-calendar-container {
   width: 350px;
-  height: 355px;
+  height: 386px;
   background: #2a2a2a;
   display: flex;
   flex-direction: column;
@@ -87,5 +87,14 @@
 }
 
 .ionic-calendar-container .footer {
-  display: flex;
+  position: relative;
+  display: block;
+  height: 100%;
+}
+
+.ionic-calendar-container .footer .button-today {
+  position: absolute;
+  font-size: 12px;
+  right: 17px;
+  bottom: 11px;
 }

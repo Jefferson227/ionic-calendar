@@ -122,6 +122,8 @@ const Page: React.FC = () => {
 
             <IonicCalendar events={events} onClickOnDay={onClickOnDay} />
 
+            <br />
+
             <IonList>
               <IonItem>
                 <IonLabel>Selected date</IonLabel>

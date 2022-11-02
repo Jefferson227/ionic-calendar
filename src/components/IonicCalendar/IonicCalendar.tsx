@@ -1,5 +1,5 @@
 import './IonicCalendar.css';
-import { IonIcon } from '@ionic/react';
+import { IonIcon, IonButton } from '@ionic/react';
 import {
   chevronBackOutline,
   chevronForwardOutline,
@@ -130,6 +130,10 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
             setBodyDisplay={setBodyDisplay}
           />
         ) : null}
+      </div>
+
+      <div className="footer">
+        <IonButton className="button-today">Today</IonButton>
       </div>
     </section>
   );
