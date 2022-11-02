@@ -72,12 +72,19 @@
   background: #008fff;
 }
 
-.ionic-calendar-container .body .calendar-grid .row .day.day-circled.day-circled-selected::before {
-  outline: 1px solid orange;
+.ionic-calendar-container .body .calendar-grid .row .day.day-circled.day-circled-selected::before,
+.ionic-calendar-container .body .calendar-grid .row .day.day-circled.day-circled-selected.day-circled-event.day-circled-today::before {
+  border: 1px solid orange;
+  transform: translate(19%, 9%);
 }
 
 .ionic-calendar-container .body .calendar-grid .row .day.day-circled.day-circled-event.day-circled-today::before {
-  background: orange;
+  border: 1px solid #ff1700;
+  transform: translate(19%, 9%);
+}
+
+.ionic-calendar-container .body .calendar-grid .row .day.day-circled.day-circled-event.day-circled-selected::before {
+  border: 1px solid #008fff;
 }
 
 .ionic-calendar-container .body .calendar-grid .row .day .button-day {
