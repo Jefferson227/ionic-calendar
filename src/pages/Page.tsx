@@ -120,7 +120,7 @@ const Page: React.FC = () => {
               onIonChange={(e) => dateChange(e)}
             ></IonDatetime>*/}
 
-            <IonicCalendar events={events} setEvents={setEvents} onClickOnDay={onClickOnDay} />
+            <IonicCalendar events={events} onClickOnDay={onClickOnDay} />
 
             <IonList>
               <IonItem>

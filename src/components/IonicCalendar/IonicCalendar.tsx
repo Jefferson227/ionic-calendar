@@ -16,7 +16,6 @@ import IonicCalendarProps from './interfaces/IonicCalendarProps';
 
 const IonicCalendar: React.FC<IonicCalendarProps> = ({
   events,
-  setEvents,
   onClickOnDay,
 }) => {
   const [firstRow, setFirstRow] = useState(controller.initializeRow());
