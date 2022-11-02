@@ -137,7 +137,13 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
       </div>
 
       <div className="footer">
-        <IonButton className="button-today" onClick={goToday}>
+        <IonButton
+          className="button-today"
+          style={{
+            display: bodyDisplay === 'calendar-grid' ? 'block' : 'none',
+          }}
+          onClick={goToday}
+        >
           Today
         </IonButton>
       </div>
