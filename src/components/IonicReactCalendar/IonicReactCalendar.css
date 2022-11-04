@@ -1,0 +1,135 @@
+.ionic-react-calendar-container {
+  width: 350px;
+  height: 386px;
+  background: #2a2a2a;
+  display: flex;
+  flex-direction: column;
+}
+
+.ionic-react-calendar-container .button {
+  background: none;
+  color: inherit;
+  font-size: 16px;
+}
+
+.ionic-react-calendar-container .button.button-arrow {
+  font-size: 25px;
+}
+
+.ionic-react-calendar-container .header {
+  display: flex;
+  justify-content: space-around;
+  margin: 23px 0 23px 0;
+}
+
+.ionic-react-calendar-container .header .button.button-close {
+  text-align: left;
+  width: 100%;
+  margin-left: 28px;
+  font-size: 23px;
+}
+
+.ionic-react-calendar-container .body {
+  margin: 0 10px 0 10px;
+}
+
+.ionic-react-calendar-container .body .weekdays {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+.ionic-react-calendar-container .body .calendar-grid .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.ionic-react-calendar-container .body .calendar-grid .row .day {
+  text-align: center;
+  width: 100%;
+  padding: 10px 0 10px 0;
+  position: relative;
+}
+
+.ionic-react-calendar-container
+  .body
+  .calendar-grid
+  .row
+  .day.day-circled::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  transform: translate(24%, 12%);
+}
+
+.ionic-react-calendar-container
+  .body
+  .calendar-grid
+  .row
+  .day.day-circled.day-circled-event::before {
+  background: orange;
+}
+
+.ionic-react-calendar-container
+  .body
+  .calendar-grid
+  .row
+  .day.day-circled.day-circled-today::before {
+  background: #008fff;
+}
+
+.ionic-react-calendar-container
+  .body
+  .calendar-grid
+  .row
+  .day.day-circled.day-circled-selected::before,
+.ionic-react-calendar-container
+  .body
+  .calendar-grid
+  .row
+  .day.day-circled.day-circled-selected.day-circled-event.day-circled-today::before {
+  border: 1px solid orange;
+  transform: translate(19%, 9%);
+}
+
+.ionic-react-calendar-container
+  .body
+  .calendar-grid
+  .row
+  .day.day-circled.day-circled-event.day-circled-today::before {
+  border: 1px solid #ff1700;
+  transform: translate(19%, 9%);
+}
+
+.ionic-react-calendar-container
+  .body
+  .calendar-grid
+  .row
+  .day.day-circled.day-circled-event.day-circled-selected::before {
+  border: 1px solid #008fff;
+}
+
+.ionic-react-calendar-container .body .calendar-grid .row .day .button-day {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.ionic-react-calendar-container .footer {
+  position: relative;
+  display: block;
+  height: 100%;
+}
+
+.ionic-react-calendar-container .footer .button-today {
+  position: absolute;
+  font-size: 12px;
+  right: 17px;
+  bottom: 11px;
+}

@@ -1,0 +1,10 @@
+.ionic-react-calendar-container .body .year-selector .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.ionic-react-calendar-container .body .year-selector .row .button-year {
+  width: 95px;
+  height: 76px;
+}

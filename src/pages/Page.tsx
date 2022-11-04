@@ -17,10 +17,10 @@ import {
 import { useParams } from 'react-router';
 import { parse, format } from 'date-fns';
 import ExploreContainer from '../components/ExploreContainer';
-import IonicCalendar from '../components/IonicCalendar/IonicCalendar';
+import IonicReactCalendar from '../components/IonicReactCalendar/IonicReactCalendar';
 import { v4 as uuid } from 'uuid';
 import './Page.css';
-interface Event {
+interface IonicReactCalendarEvent {
   id: string;
   description: string;
   start: Date;
@@ -33,7 +33,7 @@ const Page: React.FC = () => {
   const dateChange = (event: any) => {
     console.log('date changed ' + event.target.value);
   };
-  const [events, setEvents] = useState(Array<Event>);
+  const [events, setEvents] = useState(Array<IonicReactCalendarEvent>);
   const [selectedDate, setSelectedDate] = useState('');
   const [description, setDescription] = useState('');
   const [startDate, setStartDate] = useState(0);
@@ -120,7 +120,7 @@ const Page: React.FC = () => {
               onIonChange={(e) => dateChange(e)}
             ></IonDatetime>*/}
 
-            <IonicCalendar events={events} onClickOnDay={onClickOnDay} />
+            <IonicReactCalendar events={events} onClickOnDay={onClickOnDay} />
 
             <br />
 

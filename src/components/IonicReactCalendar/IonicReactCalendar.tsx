@@ -1,4 +1,4 @@
-import './IonicCalendar.css';
+import './IonicReactCalendar.css';
 import { IonIcon, IonButton } from '@ionic/react';
 import {
   chevronBackOutline,
@@ -12,9 +12,9 @@ import CalendarGrid from './components/CalendarGrid';
 import MonthSelector from './components/MonthSelector/MonthSelector';
 import YearSelector from './components/YearSelector/YearSelector';
 import HeaderButtons from './components/HeaderButtons';
-import IonicCalendarProps from './interfaces/IonicCalendarProps';
+import IonicReactCalendarProps from './interfaces/IonicReactCalendarProps';
 
-const IonicCalendar: React.FC<IonicCalendarProps> = ({
+const IonicReactCalendar: React.FC<IonicReactCalendarProps> = ({
   events,
   onClickOnDay,
 }) => {
@@ -79,7 +79,7 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
   }, [mainDate, events]);
 
   return (
-    <section className="ionic-calendar-container">
+    <section className="ionic-react-calendar-container">
       <div className="header">
         {bodyDisplay === 'calendar-grid' ? (
           <HeaderButtons
@@ -151,4 +151,4 @@ const IonicCalendar: React.FC<IonicCalendarProps> = ({
   );
 };
 
-export default IonicCalendar;
+export default IonicReactCalendar;

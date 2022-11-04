@@ -1,6 +1,6 @@
 import { addDays, addMonths, format } from 'date-fns';
 import CalendarDay from '../interfaces/CalendarDay';
-import Event from '../interfaces/Event';
+import Event from '../interfaces/IonicReactCalendarEvent';
 
 const checkEvents = (date: Date, events?: Array<Event>) => {
   const formattedDate = format(date, 'yyyy-MM-dd');
