@@ -1,7 +1,28 @@
 {
-  "name": "ionic-calendar",
-  "version": "0.0.1",
-  "private": true,
+  "name": "ionic-react-calendar",
+  "version": "1.0.0",
+  "description": "Calendar component for Ionic React based projects",
+  "homepage": "https://github.com/Jefferson227/ionic-react-calendar",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf dist; tsc; cp package.json dist/;"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "4.3.0",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "@types/uuid": "^8.3.4"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2",
+    "styled-components": ">=5.3.0"
+  },
+  "files": [
+    "/dist",
+    "package.json"
+  ],
   "dependencies": {
     "@capacitor/app": "4.0.1",
     "@capacitor/core": "4.3.0",
@@ -15,14 +36,12 @@
     "@testing-library/user-event": "^12.6.3",
     "@types/jest": "^26.0.20",
     "@types/node": "^12.19.15",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "date-fns": "^2.29.3",
     "ionicons": "^6.0.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.0",
@@ -41,34 +60,5 @@
     "workbox-routing": "^5.1.4",
     "workbox-strategies": "^5.1.4",
     "workbox-streams": "^5.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@capacitor/cli": "4.3.0",
-    "@types/uuid": "^8.3.4"
-  },
-  "description": "An Ionic project"
+  }
 }
