@@ -1,10 +1,3 @@
-// export * from './IonicReactCalendar/components/MonthSelector/MonthSelector';
-// export * from './IonicReactCalendar/components/YearSelector/YearSelector';
-// export * from './IonicReactCalendar/components/CalendarGrid';
-// export * from './IonicReactCalendar/components/HeaderButtons';
-// export * from './IonicReactCalendar/controller/controller';
-// export * from './IonicReactCalendar/interfaces/CalendarDay';
-// export * from './IonicReactCalendar/interfaces/IonicReactCalendarEvent';
-// export * from './IonicReactCalendar/interfaces/IonicReactCalendarProps';
+import IonicReactCalendarEvent from './IonicReactCalendar/interfaces/IonicReactCalendarEvent';
 import IonicReactCalendar from './IonicReactCalendar/IonicReactCalendar';
-export default IonicReactCalendar;
+export { IonicReactCalendar, IonicReactCalendarEvent };
