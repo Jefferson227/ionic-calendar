@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist; tsc; cp src/IonicReactCalendar/*.css dist/IonicReactCalendar; cp src/IonicReactCalendar/components/MonthSelector/*.css dist/IonicReactCalendar/components/MonthSelector; cp src/IonicReactCalendar/components/YearSelector/*.css dist/IonicReactCalendar/components/YearSelector; cp package.json dist/;"
+    "build": "rm -rf dist; tsc; cp src/IonicReactCalendar/*.css dist/IonicReactCalendar; cp src/IonicReactCalendar/components/MonthSelector/*.css dist/IonicReactCalendar/components/MonthSelector; cp src/IonicReactCalendar/components/YearSelector/*.css dist/IonicReactCalendar/components/YearSelector; cp README.md dist/; cp package.json dist/;"
   },
   "devDependencies": {
     "@capacitor/cli": "4.3.0",
