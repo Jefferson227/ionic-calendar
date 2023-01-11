@@ -4,6 +4,7 @@
   "description": "Calendar component for Ionic React based projects",
   "homepage": "https://github.com/Jefferson227/ionic-react-calendar",
   "main": "dist/index.js",
+  "type": "module",
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist; tsc; cp src/IonicReactCalendar/*.css dist/IonicReactCalendar; cp src/IonicReactCalendar/components/MonthSelector/*.css dist/IonicReactCalendar/components/MonthSelector; cp src/IonicReactCalendar/components/YearSelector/*.css dist/IonicReactCalendar/components/YearSelector; cp README.md dist/; cp package.json dist/;"
